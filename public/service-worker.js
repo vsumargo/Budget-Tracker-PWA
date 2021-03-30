@@ -8,6 +8,10 @@ const FILES_TO_CACHE = [
   "/index.js",
   "/icons/icon-192x192.png",
   "/icons/icon-512x512.png",
+  "/Chart.bundle.min.js",
+  "/Chart.min.css",
+  "/icons/minus-solid.svg",
+  "/icons/plus-solid.svg"
 ];
 
 // install
@@ -44,7 +48,8 @@ self.addEventListener("activate", function(evt) {
 self.addEventListener("fetch", function(evt) {
   if (evt.request.url.includes("/api/")) {
     evt.respondWith(
-      caches.open(DATA_CACHE_NAME).then(cache => {
+      caches.open(DATA_CACHE_NAME)
+      .then(cache => {
         return fetch(evt.request)
           .then(response => {
             // If the response was good, clone it and store it in the cache.

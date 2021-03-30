@@ -49,3 +49,21 @@ tr:nth-child(even) {
   width: 90%;
   margin: 0 auto;
 }
+
+#add-btn,#sub-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+}
+#plusIcon,#minusIcon{
+  height: 1rem;
+  width: 1rem;
+}
+
+.form{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 20px 0;
+}
