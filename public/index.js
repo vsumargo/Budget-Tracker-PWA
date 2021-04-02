@@ -3,6 +3,14 @@ let myChart;
 
 fetch("/api/transaction")
   .then(response => {
+    // storing the initial API call in the cache when page is first open
+    let resp = response.clone();
+    caches.open("data-cache-v1")
+    .then(cache => {
+      if (response.status === 200) {
+        cache.put("/api/transaction", resp);
+      }
+    })
     return response.json();
   })
   .then(data => {
