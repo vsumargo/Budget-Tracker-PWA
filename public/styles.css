@@ -67,3 +67,26 @@ tr:nth-child(even) {
   align-items: center;
   margin: 20px 0;
 }
+
+.online{
+  font-size: 0.8rem;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(42, 163, 42, 0.644);
+  color: white;
+  font-weight: 600;
+  padding: 10px 0;
+  text-shadow: 0 0 1px black;
+
+}
+
+.offline{
+  font-size: 0.8rem;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(160, 39, 39, 0.644);
+  color: rgb(233, 233, 233);
+  font-weight: 600;
+  padding: 10px 0;
+  text-shadow: 0 0 1px black;
+}

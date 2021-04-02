@@ -6,7 +6,7 @@ fetch("/api/transaction")
     return response.json();
   })
   .then(data => {
-    console.log(data);
+    // console.log(data);
     const request = indexedDB.open("budget", 1);
     request.onsuccess = function(event) {
         db = event.target.result;
@@ -19,7 +19,7 @@ fetch("/api/transaction")
         storedData.onsuccess = function (){
           transactions = transactions.concat(storedData.result);
           transactions = transactions.concat(data)
-          console.log(transactions);
+          // console.log(transactions);
           populateTotal();
           populateTable();
           populateChart();
@@ -157,6 +157,33 @@ function sendTransaction(isAdding) {
     amountEl.value = "";
   });
 }
+
+// Add online or offline status to the top of the page for UI/UX
+window.addEventListener('load', () => {
+  let status = document.querySelector('#connectionStatus');
+
+  function setStatus (event){
+    if (navigator.onLine){
+      let condition = 'online';
+      status.className = condition;
+      status.innerHTML = `Status: ${condition.toUpperCase()}`;
+
+      setTimeout(() => {
+        if (status.getAttribute('class') === 'online'){
+          status.removeAttribute('class');
+          status.innerHTML = '';
+        }
+      },3000);
+    } else {
+      let condition = 'offline';
+      status.className = condition;
+      status.innerHTML = `Status: ${condition.toUpperCase()}`;
+    }
+  }
+  window.addEventListener('online',setStatus);
+  window.addEventListener('offline', setStatus);
+});
+
 
 document.querySelector("#add-btn").onclick = function() {
   sendTransaction(true);
